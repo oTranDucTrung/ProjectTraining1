@@ -1,5 +1,8 @@
 class Course < ApplicationRecord
   extend FriendlyId
+  include PublicActivity::Model
+  tracked
+  
   friendly_id :name, use: :slugged
   mount_uploader :thumbnail, ImageUploader
 
@@ -8,7 +11,6 @@ class Course < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :cart_items, dependent: :destroy
   has_many :order_details, dependent: :destroy
-
   belongs_to :category
   belongs_to :user
 

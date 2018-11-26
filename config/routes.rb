@@ -5,6 +5,7 @@ class ActionDispatch::Routing::Mapper
 end
 
 Rails.application.routes.draw do
+  get 'activities/index'
   devise_for :users, only: :omniauth_callbacks, controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
   draw :api
   scope "(:locale)", locale: /en|vi/ do
@@ -21,7 +22,12 @@ Rails.application.routes.draw do
     resources :orders
     devise_for :users, controllers: { registrations: "users/registrations", sessions: "users/sessions",
     passwords: "users/passwords"}, skip: :omniauth_callbacks
-    resources :users, only: :show
+    resources :users, only: :show do
+      member do
+        get :following, :followers
+      end
+    end
+    resources :relationships, only: [:create, :destroy]
 
     namespace :admin do
       resources :users

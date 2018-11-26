@@ -11,6 +11,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def following
+    @title = t "users.show_follow.following"
+    @users = @user.following.page params[:page]
+    render :show_follow
+  end
+  
+  def followers
+    @title = t "users.show_follow.followers"
+    @users = @user.followers.page params[:page]
+    render :show_follow
+  end
+
   private
 
   def get_user

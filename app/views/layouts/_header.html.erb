@@ -48,6 +48,8 @@
             <%= render "layouts/show_cart", cart_items: @cart_items, total_price: @total_price %>
           </li>
           <% if current_user.role == "student"  %>
+          <li class="username-header"><%= link_to current_user.name, user_path(current_user) %></li>
+          <% unless current_user.role == "student"  %>
             <li><%= link_to t(".my_course"), courses_path %></a></li>
           <% end %>
           <li class="dropdown">

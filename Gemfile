@@ -27,6 +27,7 @@ gem "mini_magick", "4.7.0"
 gem "mysql2", ">= 0.4.4", "< 0.6.0"
 gem "omniauth-facebook"
 gem "omniauth-google-oauth2"
+gem 'public_activity'
 gem "puma", "~> 3.11"
 gem "rails", "~> 5.2.1"
 gem "rails-i18n"

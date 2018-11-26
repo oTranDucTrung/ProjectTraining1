@@ -1,0 +1,19 @@
+<% provide :title, @title %>
+<div class="container">
+  <div class="row mt-40">
+    <hr>
+    <div class="row">
+      <div class="well">
+        <h1 class="text-center"><%= @title %></h1>
+        <div class="list-group list-course">
+          <% if @users.present? %>
+            <ul class="users follow">
+              <%= render @users %>
+            </ul>
+            <%= paginate @users %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
